@@ -15,7 +15,7 @@ export function SiteHeader() {
         <div className="ml-auto mr-6 ">
           <Button variant="ghost" asChild size="sm" className="hidden sm:flex text-2xl">
             <a
-              href="https://github.com/shadcn-ui/ui/tree/main/apps/v4/app/(examples)/dashboard"
+              href="#"
               rel="noopener noreferrer"
               target="_blank"
               className="dark:text-foreground"

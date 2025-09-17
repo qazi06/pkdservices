@@ -24,13 +24,14 @@ import {
   IconChevronRight,
   IconChevronsLeft,
   IconChevronsRight,
-  IconCircleCheckFilled,
+  // IconCircleCheckFilled,
   IconDotsVertical,
-  IconGripVertical,
+  IconEye,
+  // IconGripVertical,
   IconLayoutColumns,
-  IconLoader,
+  // IconLoader,
   IconPlus,
-  IconTrendingUp,
+  // IconTrendingUp,
 } from "@tabler/icons-react"
 import {
   type ColumnDef,
@@ -47,29 +48,29 @@ import {
   useReactTable,
   type VisibilityState,
 } from "@tanstack/react-table"
-import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
-import { toast } from "sonner"
+// import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
+// import { toast } from "sonner"
 import { z } from "zod"
 
-import { useIsMobile } from "@/hooks/use-mobile"
+// import { useIsMobile } from "@/hooks/use-mobile"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import {
-  type ChartConfig,
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
+  // type ChartConfig,
+  // ChartContainer,
+  // ChartTooltip,
+  // ChartTooltipContent,
 } from "@/components/ui/chart"
 import { Checkbox } from "@/components/ui/checkbox"
 import {
   Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
+  // DrawerClose,
+  // DrawerContent,
+  // DrawerDescription,
+  // DrawerFooter,
+  // DrawerHeader,
+  // DrawerTitle,
+  // DrawerTrigger,
 } from "@/components/ui/drawer"
 import {
   DropdownMenu,
@@ -88,7 +89,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { Separator } from "@/components/ui/separator"
+// import { Separator } from "@/components/ui/separator"
 import {
   Table,
   TableBody,
@@ -100,46 +101,45 @@ import {
 import {
   Tabs,
   TabsContent,
-  TabsList,
-  TabsTrigger,
+  // TabsList,
+  // TabsTrigger,
 } from "@/components/ui/tabs"
 
 export const Schema = z.object({
-  id: z.number(),
-  header: z.string(),
-  type: z.string(),
-  status: z.string(),
-  target: z.string(),
-  limit: z.string(),
-  reviewer: z.string(),
+  // id: z.number(),
+  // header: z.string(),
+  // type: z.string(),
+  // status: z.string(),
+  // target: z.string(),
+  // limit: z.string(),
+  // reviewer: z.string(),
 })
 
 // Create a separate component for the drag handle
-function DragHandle({ id }: { id: number }) {
-  const { attributes, listeners } = useSortable({
-    id,
-  })
+// function DragHandle() {
+//   return;
+  
 
-  return (
-    <Button
-      {...attributes}
-      {...listeners}
-      variant="ghost"
-      size="icon"
-      className="text-muted-foreground size-7 hover:bg-transparent"
-    >
-      <IconGripVertical className="text-muted-foreground size-3" />
-      <span className="sr-only">Drag to reorder</span>
-    </Button>
-  )
-}
+  // return 
+    // <Button
+    //   {...attributes}
+    //   {...listeners}
+    //   variant="ghost"
+    //   size="icon"
+    //   className="text-muted-foreground size-7 hover:bg-transparent"
+    // >
+    //   <IconGripVertical className="text-muted-foreground size-3" />
+    //   <span className="sr-only">Drag to reorder</span>
+    // </Button>
+  
+// }
 
 const columns: ColumnDef<z.infer<typeof Schema>>[] = [
-  {
-    id: "drag",
-    header: () => null,
-    cell: ({ row }) => <DragHandle id={row.original.id} />,
-  },
+  // {
+  //   id: "drag",
+  //   header: () => null,
+  //   cell: ({ row }) => <DragHandle />,
+  // },
   {
     id: "select",
     header: ({ table }) => (
@@ -154,15 +154,15 @@ const columns: ColumnDef<z.infer<typeof Schema>>[] = [
         />
       </div>
     ),
-    cell: ({ row }) => (
-      <div className="flex items-center justify-center">
-        <Checkbox
-          checked={row.getIsSelected()}
-          onCheckedChange={(value) => row.toggleSelected(!!value)}
-          aria-label="Select row"
-        />
-      </div>
-    ),
+    // cell: ({ row }) => (
+    //   <div className="flex items-center justify-center">
+    //     <Checkbox
+    //       checked={row.getIsSelected()}
+    //       onCheckedChange={(value) => row.toggleSelected(!!value)}
+    //       aria-label="Select row"
+    //     />
+    //   </div>
+    // ),
     enableSorting: false,
     enableHiding: false,
   },
@@ -170,16 +170,16 @@ const columns: ColumnDef<z.infer<typeof Schema>>[] = [
     accessorKey: "header",
     header: "Name",
     cell: ({ row }) => {
-      return <TableCellViewer item={row.original} />
+      return <TableCellViewer  item={row.original} />
     },
-    enableHiding: false,
+    
   },
   {
-    accessorKey: "type",
+ 
     header: "Tag",
     cell: ({ row }) => (
-      <div className="w-32">
-        <Badge variant="outline" className="text-muted-foreground px-1.5">
+      <div className="w-40">
+        <Badge className="text-muted-foreground px-1.5">
           {row.original.type}
         </Badge>
       </div>
@@ -189,82 +189,87 @@ const columns: ColumnDef<z.infer<typeof Schema>>[] = [
     accessorKey: "status",
     header: "Sub Name",
     cell: ({ row }) => (
-      <Badge variant="outline" className="text-muted-foreground px-1.5">
-        {row.original.status === "Done" ? (
+      <Badge className="w-48">
+        {/* {row.original.status === "Done" ? (
           <IconCircleCheckFilled className="fill-green-500 dark:fill-green-400" />
         ) : (
           <IconLoader />
-        )}
+        )} */}
         {row.original.status}
       </Badge>
     ),
   },
   {
     accessorKey: "target",
-    header: () => <div className="w-full text-right">Created_At</div>,
+    header: () => <div className="relative left-20">Created_At</div>,
     cell: ({ row }) => (
       <form
-        onSubmit={(e) => {
-          e.preventDefault()
-          toast.promise(new Promise((resolve) => setTimeout(resolve, 1000)), {
-            loading: `Saving ${row.original.header}`,
-            success: "Done",
-            error: "Error",
-          })
-        }}
+        // onSubmit={(e) => {
+        //   e.preventDefault()
+        //   toast.promise(new Promise((resolve) => setTimeout(resolve, 1000)), {
+        //     loading: `Saving ${row.original.header}`,
+        //     success: "Done",
+        //     error: "Error",
+        //   })
+        // }}
       >
-        <Label htmlFor={`${row.original.id}-target`} className="sr-only">
+        {/* <Label htmlFor={`${row.original.id}-target`} className="sr-only">
           Target
-        </Label>
+        </Label> */}
         <Input
-          className="hover:bg-input/30 focus-visible:bg-background dark:hover:bg-input/30 dark:focus-visible:bg-input/30 h-8 w-16 border-transparent bg-transparent text-right shadow-none focus-visible:border dark:bg-transparent"
+          className="w-46 ml-20"
           defaultValue={row.original.target}
-          id={`${row.original.id}-target`}
+          // id={`${row.original.id}-target`}
         />
       </form>
     ),
   },
   {
     accessorKey: "limit",
-    header: () => <div className="w-full text-right">Website</div>,
-    cell: ({ row }) => (
-      <form
-        onSubmit={(e) => {
-          e.preventDefault()
-          toast.promise(new Promise((resolve) => setTimeout(resolve, 1000)), {
-            loading: `Saving ${row.original.header}`,
-            success: "Done",
-            error: "Error",
-          })
-        }}
-      >
-        <Label htmlFor={`${row.original.id}-limit`} className="sr-only">
-          Limit
-        </Label>
-        <Input
-          className="hover:bg-input/30 focus-visible:bg-background dark:hover:bg-input/30 dark:focus-visible:bg-input/30 h-8 w-16 border-transparent bg-transparent text-right shadow-none focus-visible:border dark:bg-transparent"
-          defaultValue={row.original.limit}
-          id={`${row.original.id}-limit`}
-        />
-      </form>
+    header: () => <div>Website</div>,
+     cell: () => (
+      <>
+      <IconEye />
+      </>
+      // <form
+      //   onSubmit={(e) => {
+      //     e.preventDefault()
+      //     toast.promise(new Promise((resolve) => setTimeout(resolve, 1000)), {
+      //       loading: `Saving ${row.original.header}`,
+      //       success: "Done",
+      //       error: "Error",
+      //     })
+      //   }}
+      // >
+      //   <Label htmlFor={`${row.original.id}-limit`} className="sr-only">
+      //     Limit
+      //   </Label>
+      //   <Input
+      //     className="hover:bg-input/30 focus-visible:bg-background dark:hover:bg-input/30 dark:focus-visible:bg-input/30 h-8 w-16 border-transparent bg-transparent text-right shadow-none focus-visible:border dark:bg-transparent"
+      //     defaultValue={row.original.limit}
+      //     id={`${row.original.id}-limit`}
+      //   />
+      // </form>
     ),
   },
   {
     accessorKey: "reviewer",
     header: "Prospectus",
     cell: ({ row }) => {
+      
       const isAssigned = row.original.reviewer !== "Assign reviewer"
 
       if (isAssigned) {
         return row.original.reviewer
       }
 
-      return (
-        <>
-          <Label htmlFor={`${row.original.id}-reviewer`} className="sr-only">
+      return( 
+         <>
+         
+          {/* <Label htmlFor={`${row.original.id}-reviewer`} className="sr-only">
             Reviewer
-          </Label>
-          <Select>
+          </Label> */}
+          {/* <Select>
             <SelectTrigger
               className="w-38 **:data-[slot=select-value]:block **:data-[slot=select-value]:truncate"
               size="sm"
@@ -278,9 +283,9 @@ const columns: ColumnDef<z.infer<typeof Schema>>[] = [
                 Jamik Tashpulatov
               </SelectItem>
             </SelectContent>
-          </Select>
-        </>
-      )
+          </Select> */}
+          </>
+       ) 
     },
   },
    {
@@ -337,7 +342,7 @@ function DraggableRow({ row }: { row: Row<z.infer<typeof Schema>> }) {
       }}
     >
       {row.getVisibleCells().map((item) => (
-        <TableCell >
+        <TableCell key={item.id} >
           {flexRender(item.column.columnDef.cell, item.getContext())}
         </TableCell>
       ))}
@@ -384,7 +389,7 @@ export function DataTable({
       columnFilters,
       pagination,
     },
-    getRowId: (row) => row.id.toString(),
+    getRowId: (row) => row.id,
     enableRowSelection: true,
     onRowSelectionChange: setRowSelection,
     onSortingChange: setSorting,
@@ -420,7 +425,7 @@ export function DataTable({
           View
         </Label>
         <Select defaultValue="outline">
-          <SelectTrigger
+          {/* <SelectTrigger
             className="flex w-fit @4xl/main:hidden"
             size="sm"
             id="view-selector"
@@ -432,18 +437,20 @@ export function DataTable({
             <SelectItem value="past-performance">Past Performance</SelectItem>
             <SelectItem value="key-personnel">Key Personnel</SelectItem>
             <SelectItem value="focus-documents">Focus Documents</SelectItem>
-          </SelectContent>
+          </SelectContent> */}
         </Select>
-        <TabsList className="**:data-[slot=badge]:bg-muted-foreground/30 hidden **:data-[slot=badge]:size-5 **:data-[slot=badge]:rounded-full **:data-[slot=badge]:px-1 @4xl/main:flex">
-          <TabsTrigger value="outline">Outline</TabsTrigger>
-          <TabsTrigger value="past-performance">
+        {/* <TabsList > */}
+          <div className="text-3xl font-bold text-[#E95730]">All Colleges</div>
+         
+          {/* <TabsTrigger value="outline">Outline</TabsTrigger> */}
+          {/* <TabsTrigger value="past-performance">
             Past Performance <Badge variant="secondary">3</Badge>
-          </TabsTrigger>
-          <TabsTrigger value="key-personnel">
+          </TabsTrigger> */}
+          {/* <TabsTrigger value="key-personnel">
             Key Personnel <Badge variant="secondary">2</Badge>
-          </TabsTrigger>
-          <TabsTrigger value="focus-documents">Focus Documents</TabsTrigger>
-        </TabsList>
+          </TabsTrigger> */}
+          {/* <TabsTrigger value="focus-documents">Focus Documents</TabsTrigger> */}
+        {/* </TabsList> */}
         <div className="flex items-center gap-2">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -636,47 +643,46 @@ export function DataTable({
   )
 }
 
-const chartData = [
-  { month: "January", desktop: 186, mobile: 80 },
-  { month: "February", desktop: 305, mobile: 200 },
-  { month: "March", desktop: 237, mobile: 120 },
-  { month: "April", desktop: 73, mobile: 190 },
-  { month: "May", desktop: 209, mobile: 130 },
-  { month: "June", desktop: 214, mobile: 140 },
-]
+// const chartData = [
+//   { month: "January", desktop: 186, mobile: 80 },
+//   { month: "February", desktop: 305, mobile: 200 },
+//   { month: "March", desktop: 237, mobile: 120 },
+//   { month: "April", desktop: 73, mobile: 190 },
+//   { month: "May", desktop: 209, mobile: 130 },
+//   { month: "June", desktop: 214, mobile: 140 },
+// ]
 
-const chartConfig = {
-  desktop: {
-    label: "Desktop",
-    color: "var(--primary)",
-  },
-  mobile: {
-    label: "Mobile",
-    color: "var(--primary)",
-  },
-} satisfies ChartConfig
+// const chartConfig = {
+//   desktop: {
+//     label: "Desktop",
+//     color: "var(--primary)",
+//   },
+//   mobile: {
+//     label: "Mobile",
+//     color: "var(--primary)",
+//   },
+// } satisfies ChartConfig
 
 function TableCellViewer({ item }: { item: z.infer<typeof Schema> }) {
-  const isMobile = useIsMobile()
+  
 
   return (
-    <Drawer direction={isMobile ? "bottom" : "right"}>
-      <DrawerTrigger asChild>
-        <Button variant="link" className="text-foreground w-fit px-0 text-left">
-          {item.header}
-        </Button>
-      </DrawerTrigger>
-      <DrawerContent>
-        <DrawerHeader className="gap-1">
-          <DrawerTitle>{item.header}</DrawerTitle>
-          <DrawerDescription>
+    <Drawer>
+      {item.header}
+      {/* <DrawerTrigger> */}
+        
+      {/* </DrawerTrigger> */}
+      {/* <DrawerContent> */}
+        {/* <DrawerHeader className="gap-1"> */}
+          {/* <DrawerTitle>{item.header}</DrawerTitle> */}
+          {/* <DrawerDescription>
             Showing total visitors for the last 6 months
-          </DrawerDescription>
-        </DrawerHeader>
-        <div className="flex flex-col gap-4 overflow-y-auto px-4 text-sm">
+          </DrawerDescription> */}
+        {/* </DrawerHeader> */}
+        {/* <div className="flex flex-col gap-4 overflow-y-auto px-4 text-sm">
           {!isMobile && (
-            <>
-              <ChartContainer config={chartConfig}>
+            <> */}
+              {/*<ChartContainer config={chartConfig}>
                 <AreaChart
                   accessibilityLayer
                   data={chartData}
@@ -685,7 +691,7 @@ function TableCellViewer({ item }: { item: z.infer<typeof Schema> }) {
                     right: 10,
                   }}
                 >
-                  <CartesianGrid vertical={false} />
+                   <CartesianGrid vertical={false} />
                   <XAxis
                     dataKey="month"
                     tickLine={false}
@@ -715,8 +721,8 @@ function TableCellViewer({ item }: { item: z.infer<typeof Schema> }) {
                     stackId="a"
                   />
                 </AreaChart>
-              </ChartContainer>
-              <Separator />
+              </ChartContainer> */}
+              {/* <Separator />
               <div className="grid gap-2">
                 <div className="flex gap-2 leading-none font-medium">
                   Trending up by 5.2% this month{" "}
@@ -728,10 +734,10 @@ function TableCellViewer({ item }: { item: z.infer<typeof Schema> }) {
                   and should wrap around.
                 </div>
               </div>
-              <Separator />
-            </>
-          )}
-          <form className="flex flex-col gap-4">
+              <Separator /> */}
+            {/* </>
+          )} */}
+          {/* <form className="flex flex-col gap-4">
             <div className="flex flex-col gap-3">
               <Label htmlFor="header">Header</Label>
               <Input id="header" defaultValue={item.header} />
@@ -802,15 +808,15 @@ function TableCellViewer({ item }: { item: z.infer<typeof Schema> }) {
                 </SelectContent>
               </Select>
             </div>
-          </form>
-        </div>
-        <DrawerFooter>
+          </form> */}
+        {/* </div> */}
+        {/* <DrawerFooter>
           <Button>Submit</Button>
           <DrawerClose asChild>
             <Button variant="outline">Done</Button>
           </DrawerClose>
-        </DrawerFooter>
-      </DrawerContent>
+        </DrawerFooter> */}
+      {/* </DrawerContent> */}
     </Drawer>
   )
 }

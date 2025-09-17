@@ -30,6 +30,7 @@ export function NavSecondary({
               <SidebarMenuButton asChild>
                 <a href={item.url}>
                   <item.icon />
+                  <link rel="stylesheet" href="" />
                   <span>{item.title}</span>
                 </a>
               </SidebarMenuButton>

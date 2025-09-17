@@ -1,12 +1,14 @@
 import type React from "react";
+import { BrowserRouter } from "react-router-dom";
+import Router from "./Routing/Router";
 import { useEffect, useState } from "react";
 import { getUser } from "./lib/ApiData";
 import { AppSidebar } from "./components/app-sidebar";
 // import { ChartAreaInteractive } from "./components/chart-area-interactive";
-import { DataTable } from "./components/data-table";
-import { SectionCards } from "./components/section-cards";
 import { SiteHeader } from "./components/site-header";
 import { SidebarInset, SidebarProvider } from "./components/ui/sidebar";
+import { DataTable } from "./components/data-table";
+// import { SectionCards } from "./components/section-cards";
 import "./App.css";
 
 export type College = {
@@ -37,7 +39,7 @@ function App() {
         type: item.tag,
         status: item.subName, 
         target: item.createdAt,
-        limit: item.offeringDegrees,
+        limit: item.link2,
         reviewer: item.link1,
 
       }));
@@ -53,34 +55,37 @@ function App() {
   }, []);
   
   return (
+    <BrowserRouter>
     <SidebarProvider
-      style={
-        {
-          "--sidebar-width": "calc(var(--spacing) * 70)",
-          "--header-height": "calc(var(--spacing) * 15)",
-        } as React.CSSProperties
-      }
+    style={
+      {
+        "--sidebar-width": "calc(var(--spacing) * 70)",
+        "--header-height": "calc(var(--spacing) * 15)",
+      } as React.CSSProperties
+    }
     >
       <AppSidebar />
+    
       <SidebarInset>
         <SiteHeader />
         <div className="@container/main flex flex-col gap-2">
-          <SectionCards />
+          {/* <SectionCards /> */}
           <div className="px-6 max-w-screen-xl mx-auto">
             {/* <ChartAreaInteractive /> */}
           </div>
           <div className="px-6">
             {items.length > 0 ? (
-              <DataTable  data={items} />
+              <DataTable  data={items } />
             ) : (
               <div className="text-center text-gray-500 py-8">
-                No college data available
+                <Router />
               </div>
             )}
           </div>
         </div>
       </SidebarInset>
     </SidebarProvider>
+    </BrowserRouter>
   );
 }
 

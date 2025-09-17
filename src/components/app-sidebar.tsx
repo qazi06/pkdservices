@@ -1,4 +1,6 @@
 import logoImage from '../assets/logo.5294e2f22022c5a5f613.png'
+import { Link } from 'react-router-dom';
+// import Router from '@/Routing/Router';
 import * as React from "react";
 import {
   // IconCamera,
@@ -17,8 +19,6 @@ import {
   IconUserShield,
   // IconMenu2,
 } from "@tabler/icons-react";
-// import { Separator } from "@/components/ui/separator";
-// import { SidebarTrigger } from "@/components/ui/sidebar";
 // import { NavDocuments } from "@/components/nav-documents"
 import { NavMain } from "@/components/nav-mainIcons";
 // import { NavSecondary } from "@/components/nav-secondary"
@@ -42,7 +42,7 @@ const data = {
   navMain: [
     {
       title: "Home",
-      url: "",
+      url: "/home2",
       icon: IconHome,
     },
     {
@@ -172,16 +172,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               asChild
               className="data-[slot=sidebar-menu-button]:!p-2 h-18 mb-14"
             >
-              <a href="http://localhost:5173/">
+              <Link to="/">
                 <img className='flex w-14' src={logoImage} alt="Logo" />
-        {/* <div className="flex "> */}
-          {/* <SidebarTrigger className="flex w-full justify-items-end " /> */}
-          {/* <Separator
-            
-            className="mx-2 data-[orientation=vertical]:h-4"
-          /> */}
-        {/* </div> */}
-              </a>
+              </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
