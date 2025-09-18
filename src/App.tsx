@@ -7,7 +7,7 @@ import { AppSidebar } from "./components/app-sidebar";
 // import { ChartAreaInteractive } from "./components/chart-area-interactive";
 import { SiteHeader } from "./components/site-header";
 import { SidebarInset, SidebarProvider } from "./components/ui/sidebar";
-import { DataTable } from "./components/data-table";
+// import { DataTable } from "./components/data-table";
 // import { SectionCards } from "./components/section-cards";
 import "./App.css";
 
@@ -75,7 +75,7 @@ function App() {
           </div>
           <div className="px-6">
             {items.length > 0 ? (
-              <DataTable  data={items } />
+              <Router />
             ) : (
               <div className="text-center text-gray-500 py-8">
                 <Router />

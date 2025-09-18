@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import { SidebarTrigger } from "@/components/ui/sidebar"
+import { IconUser } from "@tabler/icons-react"
 
 export function SiteHeader() {
   return (
@@ -11,9 +12,18 @@ export function SiteHeader() {
           orientation="vertical"
           className="mx-2 data-[orientation=vertical]:h-4"
         />
-        <h1 className="text-3xl font-serif ml-7">Career and Degree Counselling</h1>
+        <h1 className="text-3xl text-[#ea6c5b] font-serif ml-7">Career and Degree Counselling</h1>
         <div className="ml-auto mr-6 ">
-          <Button variant="ghost" asChild size="sm" className="hidden sm:flex text-2xl">
+          
+          <a
+              href="#"
+              rel="noopener noreferrer"
+              target="_blank"
+              className="dark:text-foreground"
+            >
+              <IconUser className="relative left-6 top-1 " />
+            </a>
+          <Button variant="ghost" asChild size="sm" className="hidden sm:flex font-bold text-1xl">
             <a
               href="#"
               rel="noopener noreferrer"

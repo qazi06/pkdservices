@@ -1,27 +1,14 @@
 import logoImage from '../assets/logo.5294e2f22022c5a5f613.png'
 import { Link } from 'react-router-dom';
-// import Router from '@/Routing/Router';
 import * as React from "react";
 import {
-  // IconCamera,
-  IconUsersPlus,
   IconHome,
-  // IconDatabase,
-  // IconFileAi,
-  // IconFileDescription,
-  // IconFileWord,
-  // IconHelp,
   IconSchool,
-  // IconReport,
-  // IconSearch,
-  // IconSettings,
+  IconUsersPlus,
   IconBuildingBank,
   IconUserShield,
-  // IconMenu2,
 } from "@tabler/icons-react";
-// import { NavDocuments } from "@/components/nav-documents"
 import { NavMain } from "@/components/nav-mainIcons";
-// import { NavSecondary } from "@/components/nav-secondary"
 import { NavUser } from "@/components/nav-user";
 import {
   Sidebar,
@@ -36,130 +23,41 @@ import {
 const data = {
   user: {
     name: "M.Moin",
-    email: "Store Admin",
+    email: "Store Admin", 
     avatar: "/avatars/shadcn.jpg",
   },
   navMain: [
     {
       title: "Home",
-      url: "/home2",
+      url: "/",
       icon: IconHome,
     },
     {
-      title: "Degrees",
-      url: "#",
+      title: "Degrees", 
+      url: "/degrees",
       icon: IconSchool,
     },
     {
       title: "Register Degree",
-      url: "#",
+      url: "/register-degree",
       icon: IconUsersPlus,
     },
     {
       title: "College",
-      url: "#",
+      url: "/college",
       icon: IconBuildingBank,
     },
     {
-      title: "Register College",
-      url: "#",
+      title: "Register College", 
+      url: "/register-college",
       icon: IconUsersPlus,
     },
     {
       title: "Super Admin",
-      url: "#",
+      url: "/super-admin",
       icon: IconUserShield,
     },
   ],
-  // navClouds: [
-  //   {
-  //     title: "Capture",
-  //     icon: IconCamera,
-  //     isActive: true,
-  //     url: "#",
-  //     items: [
-  //       {
-  //         title: "Active Proposals",
-  //         url: "#",
-  //       },
-  //       {
-  //         title: "Archived",
-  //         url: "#",
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     title: "Proposal",
-  //     icon: IconFileDescription,
-  //     url: "#",
-  //     items: [
-  //       {
-  //         title: "Active Proposals",
-  //         url: "#",
-  //       },
-  //       {
-  //         title: "Archived",
-  //         url: "#",
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     title: "Prompts",
-  //     icon: IconFileAi,
-  //     url: "#",
-  //     items: [
-  //       {
-  //         title: "Active Proposals",
-  //         url: "#",
-  //       },
-  //       {
-  //         title: "Archived",
-  //         url: "#",
-  //       },
-  //     ],
-  //   },
-  // ],
-//   navSecondary: [
-//     {
-//       title: "Settings",
-//       url: "#",
-//       icon: IconSettings,
-//     },
-//     {
-//       title: "Get Help",
-//       url: "#",
-//       icon: IconHelp,
-//     },
-//     {
-//       title: "Search",
-//       url: "#",
-//       icon: IconSearch,
-//     },
-//   ],
-//   documents: [
-//     {
-//       name: "Data Library",
-//       url: "#",
-//       icon: IconDatabase,
-//     },
-//     {
-//       name: "Reports",
-//       url: "#",
-//       icon: IconReport,
-//     },
-//     {
-//       name: "Word Assistant",
-//       url: "#",
-//       icon: IconFileWord,
-//     },
-//   ],
-//   SidebarTrigger:[
-//     {
-//       name: "Word Assistant",
-//       url: "#",
-//     icon: IconMenu2,
-//   },
-// ],
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
@@ -179,11 +77,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
-      <NavMain items={data.navMain} />
-      {/* <NavDocuments items={data.documents} /> */}
+      
       <SidebarContent>
-        {/* <NavSecondary items={data.navSecondary} className="mt-auto" /> */}
+        <NavMain items={data.navMain} />
       </SidebarContent>
+      
       <SidebarFooter>
         <NavUser user={data.user} />
       </SidebarFooter>
