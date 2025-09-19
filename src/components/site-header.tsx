@@ -12,7 +12,7 @@ export function SiteHeader() {
           orientation="vertical"
           className="mx-2 data-[orientation=vertical]:h-4"
         />
-        <h1 className="text-3xl text-[#ea6c5b] font-serif ml-7">Career and Degree Counselling</h1>
+        <h1 className="text-4xl text-bold text-gray-700 font-serif ml-7">Career and Degree Counselling</h1>
         <div className="ml-auto mr-6 ">
           
           <a
@@ -28,7 +28,7 @@ export function SiteHeader() {
               href="#"
               rel="noopener noreferrer"
               target="_blank"
-              className="dark:text-foreground"
+              className="dark:text-foreground text-gray-700"
             >
               Admin
             </a>

@@ -77,7 +77,7 @@ function App() {
             {items.length > 0 ? (
               <Router />
             ) : (
-              <div className="text-center text-gray-500 py-8">
+              <div>
                 <Router />
               </div>
             )}
