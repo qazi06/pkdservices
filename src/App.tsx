@@ -3,7 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 import Router from "./Routing/Router";
 import { useEffect, useState } from "react";
 import { getUser } from "./lib/ApiData";
-import { AppSidebar } from "./components/app-sidebar";
+import { SideNavContainer } from "./components/ui/side-nav-container";
 // import { ChartAreaInteractive } from "./components/chart-area-interactive";
 import { SiteHeader } from "./components/site-header";
 import { SidebarInset, SidebarProvider } from "./components/ui/sidebar";
@@ -64,7 +64,7 @@ function App() {
       } as React.CSSProperties
     }
     >
-      <AppSidebar />
+      <SideNavContainer />
     
       <SidebarInset>
         <SiteHeader />

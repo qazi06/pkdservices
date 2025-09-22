@@ -1,13 +1,8 @@
-
+import { FaUsers, FaBuilding, FaGraduationCap, FaComment} from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { getUser } from "@/lib/ApiData";
 import { DataTable } from "@/components/data-table";
-import {
-  Card,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+import { Card } from "@/components/ui/card";
 
 export type College = {
   _id: string;
@@ -37,24 +32,26 @@ function SuperAdmin() {
   const [items, setItems] = useState<DataTableItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  
+
   const getCollegeData = async () => {
     try {
       setLoading(true);
       setError(null);
       const response = await getUser();
       console.log(response.data);
-      
-      const transformedData: DataTableItem[] = response.data.map((item: College, index: number) => ({
-        id: index + 1,
-        header: item.name,
-        type: item.tag,
-        status: item.subName,
-        target: item.createdAt,
-        limit: item.link2 || '',
-        reviewer: item.link1 || '',
-      }));
-      
+
+      const transformedData: DataTableItem[] = response.data.map(
+        (item: College, index: number) => ({
+          id: index + 1,
+          header: item.name,
+          type: item.tag,
+          status: item.subName,
+          target: item.createdAt,
+          limit: item.link2 || "",
+          reviewer: item.link1 || "",
+        })
+      );
+
       setItems(transformedData);
     } catch (error) {
       console.error("Failed to fetch college data:", error);
@@ -88,7 +85,7 @@ function SuperAdmin() {
         <div className="flex items-center justify-center h-64">
           <div className="text-center">
             <p className="text-destructive mb-2">{error}</p>
-            <button 
+            <button
               onClick={getCollegeData}
               className="px-4 py-2 bg-primary text-primary-foreground rounded hover:bg-primary/90"
             >
@@ -102,28 +99,42 @@ function SuperAdmin() {
 
   return (
     <>
-      <div className="text-4xl text-center p-30 text-[#EA7131] font-bold ">
-      Welcome Super Admin
-    <div className="*:data-[slot=card]:from-primary/5 mt-44 *:data-[slot=card]:to-card dark:*:data-[slot=card]:bg-card grid grid-cols-1 gap-4  *:data-[slot=card]:bg-gradient-to-t *:data-[slot=card]:shadow-xs lg:px-6 @xl/main:grid-cols-2 @5xl/main:grid-cols-4">
-      {
-        [0,1,2,3].map(() => (
-          <Card>
-        <CardHeader>
-          <CardTitle className="text-[4rem]">
-          4
-          </CardTitle>
-        </CardHeader>
-        <CardFooter className="flex-col text-2xl ">
-          User
-        </CardFooter>
-      </Card>
-        ))
-      }
-    </div>
-    </div>
+      <div className="text-4xl text-center p-30 text-gray-700 font-bold ">
+        Welcome Super Admin
+        <div className="mt-44 grid grid-cols-1 gap-4 @5xl/main:grid-cols-4">
+          <Card className="bg-[#8EC5FF]">
+            <div>
+              <div className="text-6xl ml-8 text-gray-600">4</div>
+              <FaUsers className="ml-8 text-5xl text-gray-600" />
+              <div className="text-[20px] text-gray-600 relative bottom-8 left-4">User</div>
+            </div>
+          </Card>
+          <Card className="bg-[#8EC5FF]">
+            <div>
+              <div className="text-6xl ml-8 text-gray-600">4</div>
+              <FaBuilding className="ml-8 text-5xl text-gray-600 relative bottom-2" />
+              <div className="text-[20px] relative bottom-8 left-4 text-gray-600">Institutes</div>
+            </div>
+          </Card>
+          <Card className="bg-[#8EC5FF]">
+            <div>
+              <div className="text-6xl ml-8 text-gray-600">4</div>
+              <FaGraduationCap className="ml-8 text-5xl text-gray-600" />
+              <div className="text-[20px] text-gray-600 relative bottom-8 left-4">Degrees</div>
+            </div>
+          </Card>
+         <Card className="bg-[#8EC5FF]">
+            <div>
+              <div className="text-6xl ml-8 text-gray-600">4</div>
+              <FaComment className="ml-8 text-5xl text-gray-600" />
+              <div className="text-[20px] text-gray-600 relative bottom-8 left-4">Suggestions</div>
+            </div>
+          </Card>
+        </div>
+      </div>
       <DataTable data={items} />
     </>
   );
 }
 
-export default SuperAdmin
+export default SuperAdmin;

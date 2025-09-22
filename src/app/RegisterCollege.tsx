@@ -1,5 +1,3 @@
-
-
 function RegisterCollege() {
   return (
     <div>RegisterCollege</div>
