@@ -1,18 +1,42 @@
-import { useState } from "react"
+import { useState} from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
+import { getLogin } from "@/lib/LoginPageApi"
+import { useLocalStorage } from "@/store/useLocalStorage"
+import { useNavigate } from "react-router-dom"
 
 
 export function LoginForm({
   ...props
 }: React.ComponentProps<"div">) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useLocalStorage<string>('loginemail', '');
+  const [password, setPassword] = useLocalStorage<string>('loginpassword', '');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Login attempt:', { email, password });
+    if (!email || !password) {
+      setError('Please give the email password')
+      return;
+    }
+
+    try {
+      setLoading(true);
+      setError(null);
+      const res = await getLogin(email, password);
+      console.log('Login Successful : ', res);
+
+      navigate("/super-admin")
+
+    } catch (error) {
+      console.log('Login error : ', error)
+      setError('Login failed. Please check your credentials.')
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -20,10 +44,15 @@ export function LoginForm({
       <Card className="backdrop-blur-lg bg-white/40 border border-blue-200/50 shadow-2xl rounded-3xl overflow-hidden">
         <CardContent className="p-0">
           <div className="p-4 w-84">
-            <div className="flex flex-col gap-8">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-8">
               <div className="flex flex-col items-center text-center">
                 <h1 className="text-2xl font-bold text-slate-700 mb-2">Login To Your Account</h1>
               </div>
+              {error && (
+                <div className="bg-red-100 border border-red-300 text-red-600 px-4 py-3 rounded-2xl">
+                {error}
+                </div>
+              )}
               <div className="grid gap-2">
                 <div className="relative">
                   <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-blue-600">
@@ -59,10 +88,12 @@ export function LoginForm({
                 </div>
               </div>
               <Button 
-                onClick={handleSubmit}
+                type="submit"
+                disabled={loading}
                 className="w-full bg-gradient-to-r from-blue-400 to-indigo-400 hover:from-blue-700 hover:to-indigo-700 text-white rounded-2xl py-4 text-lg font-semibold shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
               >
-                Login
+                {loading ? 'Logging in ...' : 'Login'}
+               
               </Button>
               <div className="text-center">
                 <p className="text-slate-600 text-sm">
@@ -72,7 +103,7 @@ export function LoginForm({
                   </a>
                 </p>
               </div>
-            </div>
+            </form>
           </div>
         </CardContent>
       </Card>

@@ -1,58 +1,12 @@
 import type React from "react";
 import { BrowserRouter } from "react-router-dom";
 import Router from "./Routing/Router";
-import { useEffect, useState } from "react";
-import { getUser } from "./lib/ApiData";
 import { SideNavContainer } from "./components/ui/side-nav-container";
-// import { ChartAreaInteractive } from "./components/chart-area-interactive";
 import { SiteHeader } from "./components/site-header";
 import { SidebarInset, SidebarProvider } from "./components/ui/sidebar";
-// import { DataTable } from "./components/data-table";
-// import { SectionCards } from "./components/section-cards";
 import "./App.css";
 
-export type College = {
-  _id: string;
-  name: string;
-  tag: string;
-  subName: string;
-  description: string;
-  detail: string;
-  createdAt: string;
-  offeringDegrees: string;
-  selectedFile : string;
-  link1 : string;
-  link2 : string;
-};
-
 function App() {
-  const [items, setItems] = useState<College[]>([]);
-
-  const getCollegeData = async () => {
-    try {
-      const response = await getUser();
-      console.log(response.data);
-      
-      const transformedData = response.data.map((item: College) => ({
-        id: item._id , 
-        header: item.name ,
-        type: item.tag,
-        status: item.subName, 
-        target: item.createdAt,
-        limit: item.link2,
-        reviewer: item.link1,
-
-      }));
-      
-      setItems(transformedData);
-    } catch (error) {
-      console.error("Failed to fetch college data:", error);
-    } 
-  };
-
-  useEffect(() => {
-    getCollegeData();
-  }, []);
   
   return (
     <BrowserRouter>
@@ -69,18 +23,10 @@ function App() {
       <SidebarInset>
         <SiteHeader />
         <div className="@container/main flex flex-col gap-2">
-          {/* <SectionCards /> */}
           <div className="px-6 max-w-screen-xl mx-auto">
-            {/* <ChartAreaInteractive /> */}
           </div>
           <div className="px-6">
-            {items.length > 0 ? (
-              <Router />
-            ) : (
-              <div>
-                <Router />
-              </div>
-            )}
+              <Router /> 
           </div>
         </div>
       </SidebarInset>
@@ -89,4 +35,4 @@ function App() {
   );
 }
 
-export default App;
+export default App

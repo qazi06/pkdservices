@@ -1,6 +1,10 @@
+import Footer from "./Footer"
 const Degrees = () => {
   return (
-    <div>Degrees</div>
+    <>
+    <div className="w-[100vw] h-[60vh]">Degrees</div>
+    <Footer />
+    </>
   )
 }
 

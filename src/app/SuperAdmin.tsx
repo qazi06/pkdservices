@@ -1,8 +1,10 @@
 import { FaUsers, FaBuilding, FaGraduationCap, FaComment} from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { getUser } from "@/lib/ApiData";
-import { DataTable } from "@/components/data-table";
+// import { DataTable } from "@/components/data-table";
+import { CollegeDataTable } from "@/components/ui/college-data-table";
 import { Card } from "@/components/ui/card";
+import Footer from "./Footer";
 
 export type College = {
   _id: string;
@@ -81,7 +83,6 @@ function SuperAdmin() {
   if (error) {
     return (
       <>
-        {/* <SectionCards /> */}
         <div className="flex items-center justify-center h-64">
           <div className="text-center">
             <p className="text-destructive mb-2">{error}</p>
@@ -101,38 +102,55 @@ function SuperAdmin() {
     <>
       <div className="text-4xl text-center p-30 text-gray-700 font-bold ">
         Welcome Super Admin
-        <div className="mt-44 grid grid-cols-1 gap-4 @5xl/main:grid-cols-4">
-          <Card className="bg-[#8EC5FF]">
-            <div>
-              <div className="text-6xl ml-8 text-gray-600">4</div>
-              <FaUsers className="ml-8 text-5xl text-gray-600" />
-              <div className="text-[20px] text-gray-600 relative bottom-8 left-4">User</div>
+        <div className="mt-8 md:mt-16 lg:mt-20 xl:mt-32 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 px-4 md:px-0">
+           <Card className="bg-[#8EC5FF] hover:bg-[#7AB8FF] transition-colors duration-200">
+            <div className="p-4 md:p-6">
+              <div className="flex items-center justify-between">
+                <FaUsers className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-gray-600 opacity-80" />
+                <div className="flex flex-col">
+                  <div className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-600 mb-1 mr-18">4</div>
+                  <div className="text-sm md:text-base lg:text-lg xl:text-xl font-medium text-gray-600 mr-18">Users</div>
+                </div>
+              </div>
             </div>
           </Card>
-          <Card className="bg-[#8EC5FF]">
-            <div>
-              <div className="text-6xl ml-8 text-gray-600">4</div>
-              <FaBuilding className="ml-8 text-5xl text-gray-600 relative bottom-2" />
-              <div className="text-[20px] relative bottom-8 left-4 text-gray-600">Institutes</div>
+          <Card className="bg-[#8EC5FF] hover:bg-[#7AB8FF] transition-colors duration-200">
+            <div className="p-4 md:p-6">
+              <div className="flex items-center justify-between">
+                <FaBuilding className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-gray-600 opacity-80" />
+                <div className="flex flex-col">
+                  <div className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-600 mb-1 mr-18">4</div>
+                  <div className="text-sm md:text-base lg:text-lg xl:text-xl font-medium text-gray-600 mr-18 ">Intstitutes</div>
+                </div>
+              </div>
             </div>
           </Card>
-          <Card className="bg-[#8EC5FF]">
-            <div>
-              <div className="text-6xl ml-8 text-gray-600">4</div>
-              <FaGraduationCap className="ml-8 text-5xl text-gray-600" />
-              <div className="text-[20px] text-gray-600 relative bottom-8 left-4">Degrees</div>
+          <Card className="bg-[#8EC5FF] hover:bg-[#7AB8FF] transition-colors duration-200">
+            <div className="p-4 md:p-6">
+              <div className="flex items-center justify-between">
+                <FaGraduationCap className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-gray-600 opacity-80" />
+                <div className="flex flex-col">
+                  <div className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-600 mb-1 mr-18">4</div>
+                  <div className="text-sm md:text-base lg:text-lg xl:text-xl font-medium text-gray-600 mr-18 ">Degrees</div>
+                </div>
+              </div>
             </div>
           </Card>
-         <Card className="bg-[#8EC5FF]">
-            <div>
-              <div className="text-6xl ml-8 text-gray-600">4</div>
-              <FaComment className="ml-8 text-5xl text-gray-600" />
-              <div className="text-[20px] text-gray-600 relative bottom-8 left-4">Suggestions</div>
+         <Card className="bg-[#8EC5FF] hover:bg-[#7AB8FF] transition-colors duration-200">
+            <div className="p-4 md:p-6">
+              <div className="flex items-center justify-between">
+                <FaComment className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-gray-600 opacity-80" />
+                <div className="flex flex-col">
+                  <div className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-600 mb-1 mr-18">4</div>
+                  <div className="text-sm md:text-base lg:text-lg xl:text-xl font-medium text-gray-600 mr-18 ">Suggestions</div>
+                </div>
+              </div>
             </div>
           </Card>
         </div>
       </div>
-      <DataTable data={items} />
+      <CollegeDataTable data={items} />
+      <Footer />
     </>
   );
 }

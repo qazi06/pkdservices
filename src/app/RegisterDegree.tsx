@@ -1,6 +1,10 @@
+import Footer from "./Footer"
 function RegisterDegree() {
   return (
-    <div>RegisterDegree</div>
+    <>
+    <div className="w-[100vw] h-[60vh]">Register Degree</div>
+    <Footer />
+    </>
   )
 }
 

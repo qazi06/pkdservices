@@ -1,6 +1,6 @@
 import axios from "axios";
 const api = axios.create({
-  baseURL: "https://cdc-backend.vercel.app/colleges",
+  baseURL: "https://cdc-backend.vercel.app/colleges"
 });
 console.log(api);
 

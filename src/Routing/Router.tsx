@@ -5,9 +5,10 @@ import College from "@/app/College";
 import RegisterCollege from "@/app/RegisterCollege";
 import SuperAdmin from "@/app/SuperAdmin";
 import { SectionCards } from "@/components/section-cards";
-import { Home } from "lucide-react";
+import Home from "@/app/Home";
 import LoginPage from "@/app/users/LoginPage";
 import { SideNavContainer } from "@/components/ui/side-nav-container";
+
 
 const Router = () => {
   return (
