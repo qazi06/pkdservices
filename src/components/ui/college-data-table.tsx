@@ -145,7 +145,7 @@ export function CollegeDataTable({
       accessorKey: "limit",
       header: "Website",
       cell: ({ row }) => (
-        <Link to={row.original.limit} className="text-blue-600 hover:text-blue-800">
+        <Link to={row.original.limit} className=" hover:text-blue-600">
           <IconEye size={26} />
         </Link>
       ),
@@ -154,7 +154,7 @@ export function CollegeDataTable({
       accessorKey: "reviewer",
       header: "Prospectus",
       cell: ({ row }) => (
-        <Link to={row.original.reviewer} className="text-green-600 hover:text-green-800">
+        <Link to={row.original.reviewer} className=" hover:text-green-600">
           <IconCloudDownload size={26} />
         </Link>
       ),

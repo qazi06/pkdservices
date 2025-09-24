@@ -2,8 +2,8 @@ import { useState} from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { getLogin } from "@/lib/LoginPageApi"
-import { useLocalStorage } from "@/store/useLocalStorage"
+import { getLogin } from "@/app/Api-Intigration/LoginPageApi"
+import { useLocalStorage } from "@/app/store/useLocalStorage"
 import { useNavigate } from "react-router-dom"
 
 

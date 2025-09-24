@@ -1,13 +1,13 @@
 import { Routes, Route } from "react-router-dom";
-import Degrees from "@/app/Degrees";
-import RegisterDegree from "@/app/RegisterDegree";
-import College from "@/app/College";
-import RegisterCollege from "@/app/RegisterCollege";
-import SuperAdmin from "@/app/SuperAdmin";
+import Degrees from "@/app/dashboard/Degrees";
+import RegisterDegree from "@/app/dashboard/RegisterDegree";
+import College from "../dashboard/College";
+import RegisterCollege from "@/app/dashboard/RegisterCollege";
+import SuperAdmin from "@/app/dashboard/SuperAdmin";
 import { SectionCards } from "@/components/section-cards";
-import Home from "@/app/Home";
-import LoginPage from "@/app/users/LoginPage";
-import { SideNavContainer } from "@/components/ui/side-nav-container";
+import Home from "@/app/dashboard/Home";
+import LoginPage from "@/components/ui/LoginPage";
+import { SideNavContainer } from "@/app/dashboard/side-nav-container";
 
 
 const Router = () => {

@@ -1,7 +1,7 @@
 import type React from "react";
 import { BrowserRouter } from "react-router-dom";
-import Router from "./Routing/Router";
-import { SideNavContainer } from "./components/ui/side-nav-container";
+import Router from "./app/Router/Router";
+import { SideNavContainer } from "./app/dashboard/side-nav-container";
 import { SiteHeader } from "./components/site-header";
 import { SidebarInset, SidebarProvider } from "./components/ui/sidebar";
 import "./App.css";

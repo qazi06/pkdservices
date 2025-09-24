@@ -1,10 +1,10 @@
 import { FaUsers, FaBuilding, FaGraduationCap, FaComment} from "react-icons/fa";
 import { useEffect, useState } from "react";
-import { getUser } from "@/lib/ApiData";
+import { getUser } from "@/app/Api-Intigration/ApiData";
 // import { DataTable } from "@/components/data-table";
 import { CollegeDataTable } from "@/components/ui/college-data-table";
 import { Card } from "@/components/ui/card";
-import Footer from "./Footer";
+import Footer from "../../components/ui/Footer";
 
 export type College = {
   _id: string;
