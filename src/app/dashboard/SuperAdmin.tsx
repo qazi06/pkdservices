@@ -1,6 +1,6 @@
 import { FaUsers, FaBuilding, FaGraduationCap, FaComment} from "react-icons/fa";
 import { useEffect, useState } from "react";
-import { getUser } from "@/app/Api-Intigration/ApiData";
+import { getUser } from "@/app/Api-Intigration/CollegesData";
 // import { DataTable } from "@/components/data-table";
 import { CollegeDataTable } from "@/components/ui/college-data-table";
 import { Card } from "@/components/ui/card";
