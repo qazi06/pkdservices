@@ -1,5 +1,4 @@
-import logoImage from '../../assets/logo.5294e2f22022c5a5f613.png'
-import { Link } from 'react-router-dom';
+import logoImage from "../../assets/logo.5294e2f22022c5a5f613.png";
 import * as React from "react";
 import {
   IconHome,
@@ -23,7 +22,7 @@ import {
 const data = {
   user: {
     name: "M.Moin",
-    email: "Store Admin", 
+    email: "Store Admin",
     avatar: "/avatars/shadcn.jpg",
   },
   navMain: [
@@ -33,7 +32,7 @@ const data = {
       icon: IconHome,
     },
     {
-      title: "Degrees", 
+      title: "Degrees",
       url: "/degrees",
       icon: IconSchool,
     },
@@ -48,7 +47,7 @@ const data = {
       icon: IconBuildingBank,
     },
     {
-      title: "Register College", 
+      title: "Register College",
       url: "/register-college",
       icon: IconUsersPlus,
     },
@@ -57,15 +56,12 @@ const data = {
       url: "/super-admin",
       icon: IconUserShield,
     },
-    {
-      title: "Login",
-      url: "/login-page",
-      icon: IconUserShield,
-    },
   ],
 };
 
-export function SideNavContainer({ ...props }: React.ComponentProps<typeof Sidebar>) {
+export function SideNavContainer({
+  ...props
+}: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="offcanvas" {...props}>
       <SidebarHeader>
@@ -73,20 +69,20 @@ export function SideNavContainer({ ...props }: React.ComponentProps<typeof Sideb
           <SidebarMenuItem>
             <SidebarMenuButton
               asChild
-              className="data-[slot=sidebar-menu-button]:!p-2 h-18 mb-14"
+              className="data-[slot=sidebar-menu-button]:!p-2 h-18 mb-14 "
             >
-              <Link to="/">
-                <img className='flex w-14' src={logoImage} alt="Logo" />
-              </Link>
+              <div>
+                <img className="flex w-14" src={logoImage} alt="Logo" />
+              </div>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
-      
+
       <SidebarContent>
         <NavMain items={data.navMain} />
       </SidebarContent>
-      
+
       <SidebarFooter>
         <NavUser user={data.user} />
       </SidebarFooter>

@@ -309,7 +309,7 @@ function SidebarInset({ className, ...props }: React.ComponentProps<"main">) {
     <main
       data-slot="sidebar-inset"
       className={cn(
-        " bg-gradient-to-br from-sky-100 via-blue-50 to-cyan-100 relative flex w-full flex-1 flex-col",
+        " bg-gradient-to-br from-sky-200 via-blue-50 to-cyan-100 relative flex w-full flex-1 flex-col",
         "md:peer-data-[variant=inset]:m-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow-sm md:peer-data-[variant=inset]:peer-data-[state=collapsed]:ml-2",
         className
       )}
@@ -501,7 +501,7 @@ function SidebarMenuButton({
   variant = "default",
   size = "default",
   tooltip,
-  className,
+ 
   ...props
 }: React.ComponentProps<"button"> & {
   asChild?: boolean;
@@ -517,7 +517,7 @@ function SidebarMenuButton({
       data-sidebar="menu-button"
       data-size={size}
       data-active={isActive}
-      className={cn(sidebarMenuButtonVariants({ variant, size }), className)}
+      className={cn(sidebarMenuButtonVariants({ variant, size }))}
       {...props}
     />
   );

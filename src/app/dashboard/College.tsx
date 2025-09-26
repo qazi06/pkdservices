@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { getUser } from "@/app/Api-Intigration/CollegesData";
+import { getColleges } from "@/app/API/CollegesData";
 import { Card } from "@/components/ui/card";
 import Footer from "../../components/ui/Footer";
+import { Button } from "@/components/ui/button";
 
 type DataTableItem = {
   id: string;
@@ -26,7 +27,7 @@ function College() {
     try {
       setLoading(true);
       setError(null);
-      const response = await getUser();
+      const response = await getColleges();
 
       const transformedData: DataTableItem[] = response.data.map(
         (item: DataTableItem, index: number) => ({
@@ -86,25 +87,42 @@ function College() {
   return (
     <>
       <div className="p-12">
-        <h1 className="text-5xl text-center my-30 font-semibold">
+        <h1 className="h-20 text-5xl text-center mb-50 mt-15 font-semibold bg-gradient-to-r from-sky-500 via-blue-400 to-cyan-500 bg-clip-text text-transparent ">
           All Colleges
         </h1>
         <div>
           <div className="flex justify-end">
             <input
-              className="border-2 w-50 rounded-2xl border-[#8EC5FF] pl-4 py-1 "
+              className="border-2 w-50 rounded-2xl border-[#8EC5FF] pl-4 py-1 focus:outline-none"
               type="search"
               placeholder="Search..."
             />
           </div>
 
-          <div className=" grid lg:grid-cols-4 gap-2">
+          <div className=" grid lg:grid-cols-5 gap-2 mt-6">
             {items.map((college) => (
-              <Card key={college.id}>
-                <img className="rounded-tl-[13px] rounded-tr-[13px] relative bottom-6 h-65" src={college.selectedFile} alt="College Images" />
-                <div className="text-4xl font-bold">{college.name}</div>
-                <div className="text-2xl font-bold">{college.subName}</div>
-                <div className="text-2xl">{college.description}</div>
+              <Card
+                key={college.id}
+                className="bg-gradient-to-br from-sky-100 via-blue-50 to-cyan-100"
+              >
+                <img
+                  className="rounded-tl-[13px] rounded-tr-[13px] relative bottom-6 h-60"
+                  src={college.selectedFile}
+                  alt="College Images"
+                />
+                <div className="text-[1.4rem] mt-auto font-bold text-center relative bottom-7">
+                  {college.name}
+                </div>
+                <div className="text-[1.1rem] mt-auto font-bold text-center relative bottom-8 ">
+                  {college.subName}
+                </div>
+                <div className="mt-auto text-center relative bottom-11">
+                  {college.description}
+                </div>
+
+                <div className="mt-auto text-center">
+                  <Button className=" w-24 bg-white text-sky-500">More</Button>
+                </div>
               </Card>
             ))}
           </div>

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-type StepStatus = 'completed' | 'current' | 'upcoming';
+type StepStatus = "completed" | "current" | "upcoming";
 
 interface FormData {
   step1: {
@@ -27,34 +27,35 @@ interface StepProgressBarProps {
   initialStep?: number;
 }
 
-const RegisterCollegeCard: React.FC<StepProgressBarProps> = ({ 
-  totalSteps = 4, 
-  initialStep = 1 
+const RegisterCollegeCard: React.FC<StepProgressBarProps> = ({
+  totalSteps = 4,
+  initialStep = 1,
 }) => {
   const [currentStep, setCurrentStep] = useState<number>(initialStep);
   const [formData, setFormData] = useState<FormData>({
-    step1: { enterId: '', name: '', subName: '' },
-    step2: { description: '', detail: '' },
-    step3: { offeringDegrees: '', prospectusUrl: '', websiteUrl: ''  },
-    step4: { file: null, }
+    step1: { enterId: "", name: "", subName: "" },
+    step2: { description: "", detail: "" },
+    step3: { offeringDegrees: "", prospectusUrl: "", websiteUrl: "" },
+    step4: { file: null },
   });
 
   const getStepStatus = (stepNumber: number): StepStatus => {
-    if (stepNumber < currentStep) return 'completed';
-    if (stepNumber === currentStep) return 'current';
-    return 'upcoming';
+    if (stepNumber < currentStep) return "completed";
+    if (stepNumber === currentStep) return "current";
+    return "upcoming";
   };
 
   const getStepClasses = (stepNumber: number): string => {
     const status = getStepStatus(stepNumber);
-    const baseClasses = 'w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium relative z-10';
-    
+    const baseClasses =
+      "w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium relative z-10";
+
     switch (status) {
-      case 'completed':
+      case "completed":
         return `${baseClasses} bg-[#8EC5FF] text-white`;
-      case 'current':
+      case "current":
         return `${baseClasses} bg-[#8EC5FF] text-white`;
-      case 'upcoming':
+      case "upcoming":
         return `${baseClasses} bg-gray-200 text-gray-500 border-2 border-gray-300`;
       default:
         return baseClasses;
@@ -62,10 +63,10 @@ const RegisterCollegeCard: React.FC<StepProgressBarProps> = ({
   };
 
   const getConnectorClasses = (stepNumber: number): string => {
-    if (stepNumber >= totalSteps) return 'hidden';
-    
+    if (stepNumber >= totalSteps) return "hidden";
+
     const isCompleted = stepNumber < currentStep;
-    return `flex-1 h-0.5 ${isCompleted ? 'bg-[#8EC5FF]' : 'bg-gray-300'} mx-2`;
+    return `flex-1 h-0.5 ${isCompleted ? "bg-[#8EC5FF]" : "bg-gray-300"} mx-2`;
   };
 
   const handlePrevious = (): void => {
@@ -80,19 +81,23 @@ const RegisterCollegeCard: React.FC<StepProgressBarProps> = ({
     }
   };
 
-  const updateFormData = (step: keyof FormData, field: string, value: string | File | null): void => {
-    setFormData(prev => ({
+  const updateFormData = (
+    step: keyof FormData,
+    field: string,
+    value: string | File | null
+  ): void => {
+    setFormData((prev) => ({
       ...prev,
       [step]: {
         ...prev[step],
-        [field]: value
-      }
+        [field]: value,
+      },
     }));
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const file = e.target.files?.[0] || null;
-    updateFormData('step4', 'file', file);
+    updateFormData("step4", "file", file);
   };
 
   const renderStepContent = () => {
@@ -107,9 +112,11 @@ const RegisterCollegeCard: React.FC<StepProgressBarProps> = ({
               <input
                 type="id"
                 value={formData.step1.enterId}
-                onChange={(e) => updateFormData('step1', 'enterId', e.target.value)}
+                onChange={(e) =>
+                  updateFormData("step1", "enterId", e.target.value)
+                }
                 placeholder="College Id..."
-                className="w-full px-2 py-1 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                className="w-full px-2 py-1 border border-sky-400 focus:outline-none rounded-lg placeholder-sky-400"
               />
             </div>
             <div>
@@ -119,21 +126,25 @@ const RegisterCollegeCard: React.FC<StepProgressBarProps> = ({
               <input
                 type="text"
                 value={formData.step1.name}
-                onChange={(e) => updateFormData('step1', 'name', e.target.value)}
+                onChange={(e) =>
+                  updateFormData("step1", "name", e.target.value)
+                }
                 placeholder="College Name..."
-                className="w-full px-2 py-1 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                className="w-full px-2 py-1 border rounded-lg border-sky-400 focus:outline-none placeholder-sky-400"
               />
             </div>
-             <div>
+            <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Sub Name
               </label>
               <input
                 type="text"
                 value={formData.step1.subName}
-                onChange={(e) => updateFormData('step1', 'subName', e.target.value)}
+                onChange={(e) =>
+                  updateFormData("step1", "subName", e.target.value)
+                }
                 placeholder="College Sub Name..."
-                className="w-full px-2 py-1 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                className="w-full px-2 py-1 border rounded-lg border-sky-400 focus:outline-none placeholder-sky-400"
               />
             </div>
           </div>
@@ -145,12 +156,14 @@ const RegisterCollegeCard: React.FC<StepProgressBarProps> = ({
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Description
-              </label> 
+              </label>
               <textarea
                 value={formData.step2.description}
-                onChange={(e) => updateFormData('step2', 'description', e.target.value)}
+                onChange={(e) =>
+                  updateFormData("step2", "description", e.target.value)
+                }
                 placeholder="Description..."
-                className="w-full px-3  border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent resize-none"
+                className="w-full px-3  border rounded-lg border-sky-400 focus:outline-none placeholder-sky-400 resize-none"
                 rows={2}
               />
             </div>
@@ -160,9 +173,11 @@ const RegisterCollegeCard: React.FC<StepProgressBarProps> = ({
               </label>
               <textarea
                 value={formData.step2.detail}
-                onChange={(e) => updateFormData('step2', 'detail', e.target.value)}
+                onChange={(e) =>
+                  updateFormData("step2", "detail", e.target.value)
+                }
                 placeholder="Detail..."
-                className="w-full px-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent resize-none"
+                className="w-full px-3 border rounded-lg border-sky-400 focus:outline-none placeholder-sky-400 resize-none"
                 rows={2}
               />
             </div>
@@ -178,21 +193,31 @@ const RegisterCollegeCard: React.FC<StepProgressBarProps> = ({
               </label>
               <select
                 value={formData.step3.offeringDegrees}
-                onChange={(e) => updateFormData('step3', 'offeringDegrees', e.target.value)}
-                className="w-full px-2 py-1 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                onChange={(e) =>
+                  updateFormData("step3", "offeringDegrees", e.target.value)
+                }
+                className="w-full px-2 py-1 border rounded-lg border-sky-400 focus:outline-none text-sky-400"
               >
                 <option value="">Select...</option>
                 <option value="search all">Search All</option>
-                <option value="FSC(Pre-Engineering)">FSC(Pre-Engineering)</option>
+                <option value="FSC(Pre-Engineering)">
+                  FSC(Pre-Engineering)
+                </option>
                 <option value="FSC(Pre-Medical)">FSC(Pre-Medical)</option>
                 <option value="ICS(Physics)">ICS(Physics)</option>
                 <option value="ICS(Statistics)">ICS(Statistics)</option>
                 <option value="ICS(Economics)">ICS(Economics)</option>
                 <option value="BS (BBA)">BS (BBA)</option>
                 <option value="BS (Botany)">BS (Botany)</option>
-                <option value="BS Chemistry (Pre-Medical)">BS Chemistry (Pre-Medical)</option>
-                <option value="BS Chemistry (Pre-Engineering)">BS Chemistry (Pre-Engineering)</option>
-                <option value="BS Communication Studies">BS Communication Studies</option>
+                <option value="BS Chemistry (Pre-Medical)">
+                  BS Chemistry (Pre-Medical)
+                </option>
+                <option value="BS Chemistry (Pre-Engineering)">
+                  BS Chemistry (Pre-Engineering)
+                </option>
+                <option value="BS Communication Studies">
+                  BS Communication Studies
+                </option>
                 <option value="BS English">BS English</option>
                 <option value="BS Physics">BS Physics</option>
                 <option value="BS Economics">BS Economics</option>
@@ -200,7 +225,9 @@ const RegisterCollegeCard: React.FC<StepProgressBarProps> = ({
                 <option value="BS Computer Science">BS Computer Science</option>
                 <option value="BS Islamic Studies">BS Islamic Studies</option>
                 <option value="BS Mathematics">BS Mathematics</option>
-                <option value="BS Political Science">BS Political Science</option>
+                <option value="BS Political Science">
+                  BS Political Science
+                </option>
                 <option value="BS Sociology">BS Sociology</option>
                 <option value="BS Statistics">BS Statistics</option>
                 <option value="BS Urdu">BS Urdu</option>
@@ -215,9 +242,11 @@ const RegisterCollegeCard: React.FC<StepProgressBarProps> = ({
               <input
                 type="url"
                 value={formData.step3.prospectusUrl}
-                onChange={(e) => updateFormData('step3', 'proppectusUrl', e.target.value)}
+                onChange={(e) =>
+                  updateFormData("step3", "prospectusUrl", e.target.value)
+                }
                 placeholder="Prospectus Url..."
-                className="w-full px-2 py-1 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                className="w-full px-2 py-1 border rounded-lg border-sky-400 focus:outline-none text-sky-400"
               />
             </div>
             <div>
@@ -227,9 +256,11 @@ const RegisterCollegeCard: React.FC<StepProgressBarProps> = ({
               <input
                 type="url"
                 value={formData.step3.websiteUrl}
-                onChange={(e) => updateFormData('step3', 'websiteUrl', e.target.value)}
+                onChange={(e) =>
+                  updateFormData("step3", "websiteUrl", e.target.value)
+                }
                 placeholder="Website Url..."
-                className="w-full px-2 py-1 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                className="w-full px-2 py-1 border rounded-lg border-sky-400 focus:outline-none text-sky-400"
               />
             </div>
           </div>
@@ -246,7 +277,7 @@ const RegisterCollegeCard: React.FC<StepProgressBarProps> = ({
                 <input
                   type="file"
                   onChange={handleFileChange}
-                  className="w-full px-2 py-1 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-teal-50 file:text-teal-700 hover:file:bg-teal-100"
+                  className="w-full px-2 py-1 border rounded-lg border-sky-400 focus:outline-none"
                   accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
                 />
               </div>
@@ -266,16 +297,21 @@ const RegisterCollegeCard: React.FC<StepProgressBarProps> = ({
 
   const getStepTitle = (): string => {
     switch (currentStep) {
-      case 1: return '';
-      case 2: return '';
-      case 3: return '';
-      case 4: return '';
-      default: return 'Step';
+      case 1:
+        return "";
+      case 2:
+        return "";
+      case 3:
+        return "";
+      case 4:
+        return "";
+      default:
+        return "Step";
     }
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-8 bg-white">
+    <div className="max-w-2xl mx-auto p-8 bg-gradient-to-br from-sky-50 via-blue-50 to-cyan-50">
       <div className="flex items-center justify-between mb-8">
         {Array.from({ length: totalSteps }, (_, index) => {
           const stepNumber = index + 1;
@@ -283,9 +319,19 @@ const RegisterCollegeCard: React.FC<StepProgressBarProps> = ({
             <React.Fragment key={stepNumber}>
               <div className="flex flex-col items-center">
                 <div className={getStepClasses(stepNumber)}>
-                  {getStepStatus(stepNumber) === 'completed' ? (
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  {getStepStatus(stepNumber) === "completed" ? (
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
                     </svg>
                   ) : (
                     stepNumber
@@ -302,7 +348,9 @@ const RegisterCollegeCard: React.FC<StepProgressBarProps> = ({
       </div>
 
       <div className="mb-6">
-        <h2 className="text-xl font-semibold text-gray-800">{getStepTitle()}</h2>
+        <h2 className="text-xl font-semibold text-gray-800">
+          {getStepTitle()}
+        </h2>
       </div>
 
       {renderStepContent()}
@@ -315,7 +363,7 @@ const RegisterCollegeCard: React.FC<StepProgressBarProps> = ({
         >
           Previous
         </button>
-        
+
         {currentStep < totalSteps ? (
           <button
             onClick={handleNext}
@@ -325,7 +373,7 @@ const RegisterCollegeCard: React.FC<StepProgressBarProps> = ({
           </button>
         ) : (
           <button
-            onClick={() => console.log('Form submitted:', formData)}
+            onClick={() => console.log("Form submitted:", formData)}
             className="px-4  bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
           >
             Submit

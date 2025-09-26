@@ -1,4 +1,5 @@
 import AvtarImg from "../assets/admin-avatar.2605a7f692c2a71e8bd078b64aa7b96e.svg"
+import { Link } from "react-router-dom"
 import {
   IconCreditCard,
   IconDotsVertical,
@@ -99,7 +100,8 @@ export function NavUser({
             <DropdownMenuSeparator />
             <DropdownMenuItem >
               <IconLogout />
-              Log out
+              <Link to="login-page">Log out</Link>
+              
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

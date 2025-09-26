@@ -320,7 +320,7 @@ const RegisterCollegeCard: React.FC<StepProgressBarProps> = ({
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-8 bg-white">
+    <div className="max-w-2xl mx-auto p-8 bg-gradient-to-br from-sky-50 via-blue-50 to-cyan-50">
       <div className="flex items-center justify-between mb-8">
         {Array.from({ length: totalSteps }, (_, index) => {
           const stepNumber = index + 1;

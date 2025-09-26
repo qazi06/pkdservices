@@ -2,7 +2,7 @@ import { useState} from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { getLogin } from "@/app/Api-Intigration/LoginPageApi"
+import { getLogin } from "@/app/API/LoginPageApi"
 import { useLocalStorage } from "@/app/store/useLocalStorage"
 import { useNavigate } from "react-router-dom"
 
@@ -29,7 +29,7 @@ export function LoginForm({
       const res = await getLogin(email, password);
       console.log('Login Successful : ', res);
 
-      navigate("/super-admin")
+      navigate("/")
 
     } catch (error) {
       console.log('Login error : ', error)
