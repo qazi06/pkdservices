@@ -86,7 +86,7 @@ function Degrees() {
   }
   return (
     <>
-      <div className="p-12">
+      <div className="p-12 font-serif">
         <h1 className="h-20 text-5xl text-center mb-50 mt-15 font-semibold bg-gradient-to-r from-sky-500 via-blue-400 to-cyan-500 bg-clip-text text-transparent">
           All Degrees
         </h1>
@@ -110,13 +110,13 @@ function Degrees() {
                   src={degrees.selectedFile}
                   alt="College Images"
                 />
-                <div className="text-[1.6rem] font-bold text-center relative bottom-7">
+                <div className="text-[1.5rem] font-bold text-center relative bottom-7 text-sky-400">
                   {degrees.name}
                 </div>
-                <div className="text-[1.7rem] font-samibold text-center relative bottom-8 ">
+                <div className="text-[1.4rem] font-bold text-center relative bottom-8  ">
                   {degrees.subName}
                 </div>
-                <div className="text-center p-3 font-semibold relative bottom-12 description-text overflow-clip">
+                <div className="text-center p-3  relative bottom-12 description-text overflow-clip">
                   {degrees.description}
                 </div>
                 <div className=" mt-auto text-center">

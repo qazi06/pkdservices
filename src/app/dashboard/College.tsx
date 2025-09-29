@@ -110,13 +110,13 @@ function College() {
                   src={college.selectedFile}
                   alt="College Images"
                 />
-                <div className="text-[1.4rem] mt-auto font-bold text-center relative bottom-7">
+                <div className="text-[1.7rem] text-sky-400  font-bold text-center  relative bottom-7">
                   {college.name}
                 </div>
-                <div className="text-[1.1rem] mt-auto font-bold text-center relative bottom-8 ">
+                <div className="text-[1.2rem] font-bold text-center relative bottom-8 ">
                   {college.subName}
                 </div>
-                <div className="mt-auto text-center relative bottom-11">
+                <div className="text-center relative bottom-11">
                   {college.description}
                 </div>
 

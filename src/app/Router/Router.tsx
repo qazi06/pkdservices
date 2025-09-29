@@ -8,6 +8,7 @@ import { SectionCards } from "@/components/section-cards";
 import Home from "@/app/dashboard/Home";
 import LoginPage from "@/components/ui/LoginPage";
 import { SideNavContainer } from "@/app/dashboard/side-nav-container";
+import AvailableDegrees from "../dashboard/AvailableDegrees";
 
 
 const Router = () => {
@@ -22,6 +23,7 @@ const Router = () => {
       <Route path="/super-admin" element={<SuperAdmin />} />
       <Route path="/section-cards" element={<SectionCards />} />
       <Route path="login-page" element={<LoginPage />} />
+      <Route path="seeMoreClg" element={ <AvailableDegrees /> } />
     </Routes>
   );
 };

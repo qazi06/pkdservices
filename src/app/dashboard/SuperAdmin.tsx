@@ -105,7 +105,7 @@ function SuperAdmin() {
 
   return (
     <>
-      <div className="text-4xl text-center p-30 font-bold">
+      <div className="text-4xl text-center p-30 font-bold font-serif">
         <h1 className="h-20 bg-gradient-to-r from-sky-500 via-blue-400 to-cyan-500 bg-clip-text text-transparent ">
           Welcome Super Admin
         </h1>
