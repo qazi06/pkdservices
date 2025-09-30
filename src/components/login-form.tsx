@@ -29,7 +29,7 @@ export function LoginForm({
       const res = await getLogin(email, password);
       console.log('Login Successful : ', res);
 
-      navigate("/")
+      navigate("/home")
 
     } catch (error) {
       console.log('Login error : ', error)

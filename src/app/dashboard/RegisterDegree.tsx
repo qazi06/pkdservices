@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import RegisterDegreeCard from "../cards/RegisterDegreeCard";
-import Footer from "../../components/ui/Footer";
+import Footer from "@/components/ui/Footer";
 
 function RegisterDegree() {
   return (

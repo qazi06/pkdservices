@@ -9,13 +9,13 @@
               <div className="leading-8">
                 <ul className="space-y-2">
                   <li>
-                    <a href="#" className="hover:text-emerald-600 transition-colors">Home</a>
+                    <a href="#" className="hover:text-emerald-600">Home</a>
                   </li>
                   <li>
-                    <a href="#" className="hover:text-emerald-600 transition-colors">Contact</a>
+                    <a href="#" className="hover:text-emerald-600">Contact</a>
                   </li>
                   <li>
-                    <a href="#" className="hover:text-emerald-600 transition-colors">About</a>
+                    <a href="#" className="hover:text-emerald-600">About</a>
                   </li>
                 </ul>
               </div>
@@ -26,7 +26,7 @@
               <div className="leading-8">
                 <ul className="space-y-2">
                   <li>
-                    <a href="#" className="hover:text-emerald-600 transition-colors">College</a>
+                    <a href="#" className="hover:text-emerald-600">College</a>
                   </li>
                 </ul>
               </div>
@@ -37,13 +37,13 @@
               <div className="leading-8">
                 <ul className="space-y-2">
                   <li>
-                    <a href="#" className="hover:text-emerald-600 transition-colors">Okas</a>
+                    <a href="#" className="hover:text-emerald-600">Okas</a>
                   </li>
                   <li>
-                    <a href="#" className="hover:text-emerald-600 transition-colors">Bise</a>
+                    <a href="#" className="hover:text-emerald-600">Bise</a>
                   </li>
                   <li>
-                    <a href="#" className="hover:text-emerald-600 transition-colors">Punjab University</a>
+                    <a href="#" className="hover:text-emerald-600">Punjab University</a>
                   </li>
                 </ul>
               </div>
@@ -52,19 +52,22 @@
             <div className="text-center md:text-left">
               <h1 className="text-2xl text-emerald-700 font-bold font-serif mb-4">Social Media</h1> 
               <div className="flex justify-center md:justify-start gap-6">
-                <a href="#" className="hover:scale-110 transition-transform">
+                <a href="#">
                   <IconBrandFacebook />
                 </a>
-                <a href="#" className="hover:scale-110 transition-transform">
+                <a href="#">
                   <IconBrandTwitter />
                 </a>
-                <a href="#" className="hover:scale-110 transition-transform">
+                <a href="#">
                   <IconBrandInstagram />
                 </a>
               </div>
             </div>
           </div>
         </div>
+          <div className="text-center  font-semibold">
+            <h2>© 2022 Career & Degree Counselling App, All Rights Reserved</h2>
+          </div>
       </footer>
    )
  }

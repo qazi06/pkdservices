@@ -1,8 +1,9 @@
-import Footer from "../../components/ui/Footer";
+import Footer from "@/components/ui/Footer";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import interImg from "../../assets/inter.0ed02345548e9991209e.png";
 import bachelorImg from "../../assets/masters.a925a959280fe481031b.png";
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
@@ -44,7 +45,9 @@ function Home() {
             </div>
           </Card>
         </div>
+        <Link to="/">
         <Button className="mt-10 bg-sky-400">Let's Start</Button>
+        </Link>
       </div>
       <Footer />
     </>

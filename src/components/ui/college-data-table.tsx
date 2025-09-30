@@ -164,7 +164,7 @@ export function CollegeDataTable({
       header: "Actions",
       cell: ({ row }) => (
         <div className="flex items-center gap-2">
-          <Link to={`/edit/${row.original.id}`} className="text-blue-600 hover:text-blue-800">
+          <Link to='/register-degree' className="text-blue-600 hover:text-blue-800">
             <IconEdit size={26} />
           </Link>
           <DeleteDialog

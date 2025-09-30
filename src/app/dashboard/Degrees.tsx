@@ -1,21 +1,27 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { getDegrees } from "../API/DegreesData";
 import { Card } from "@/components/ui/card";
-import Footer from "../../components/ui/Footer";
+import Footer from "@/components/ui/Footer";
 import { Button } from "@/components/ui/button";
 
+type DegreeOffer = {
+  offerDegrees: string;
+};
+
 type DataTableItem = {
-  id: string;
+  _id: string;
   name: string;
   tag: string;
   subName: string;
   description: string;
   detail: string;
   createdAt: string;
-  offeringDegrees: string;
   selectedFile: string;
   link1: string;
   link2: string;
+  offeringDegrees: string[];
+  offerDegrees: DegreeOffer[];
 };
 
 function Degrees() {
@@ -30,8 +36,9 @@ function Degrees() {
       const response = await getDegrees();
 
       const transformedData: DataTableItem[] = response.data.map(
-        (item: DataTableItem, index: number) => ({
-          id: index + 1,
+        (item: DataTableItem) => ({
+         
+          _id: item._id,
           name: item.name,
           tag: item.tag,
           subName: item.subName,
@@ -60,7 +67,7 @@ function Degrees() {
         <div className="flex items-center justify-center h-64">
           <div className="text-center">
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-2"></div>
-            <p className="text-muted-foreground">Loading colleges...</p>
+            <p className="text-muted-foreground">Loading degrees...</p>
           </div>
         </div>
       </>
@@ -100,9 +107,9 @@ function Degrees() {
           </div>
 
           <div className=" grid lg:grid-cols-5 gap-2 mt-6">
-            {items.map((degrees) => (
+            {items.map((degrees, index) => (
               <Card
-                key={degrees.id}
+                key={index}
                 className="bg-gradient-to-br from-sky-100 via-blue-50 to-cyan-100"
               >
                 <img
@@ -116,16 +123,20 @@ function Degrees() {
                 <div className="text-[1.4rem] font-bold text-center relative bottom-8  ">
                   {degrees.subName}
                 </div>
-                <div className="text-center p-3  relative bottom-12 description-text overflow-clip">
+                <div className="text-center p-3 relative bottom-12 break-words">
                   {degrees.description}
                 </div>
                 <div className=" mt-auto text-center">
-                  <Button className=" w-24 font-bold bg-white text-sky-700">
-                    More
-                  </Button>
+                  <Link to={`/degrees/${degrees._id}`}>
+                    <Button className=" w-24 font-bold bg-white text-sky-700">
+                      More
+                    </Button>
+                  </Link>
+                  <Link to='/college'>
                   <Button className=" w-24 ml-5 font-bold bg-white text-cyan-700">
                     Colleges
                   </Button>
+                  </Link>
                 </div>
               </Card>
             ))}

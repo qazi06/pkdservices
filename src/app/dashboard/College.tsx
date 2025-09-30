@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { getColleges } from "@/app/API/CollegesData";
 import { Card } from "@/components/ui/card";
-import Footer from "../../components/ui/Footer";
+import Footer from "@/components/ui/Footer";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 type DataTableItem = {
-  id: string;
+  _id: string;
   name: string;
   tag: string;
   subName: string;
@@ -30,8 +31,8 @@ function College() {
       const response = await getColleges();
 
       const transformedData: DataTableItem[] = response.data.map(
-        (item: DataTableItem, index: number) => ({
-          id: index + 1,
+        (item: DataTableItem) => ({
+          _id: item._id,
           name: item.name,
           tag: item.tag,
           subName: item.subName,
@@ -100,9 +101,9 @@ function College() {
           </div>
 
           <div className=" grid lg:grid-cols-5 gap-2 mt-6">
-            {items.map((college) => (
+            {items.map((college, index) => (
               <Card
-                key={college.id}
+                key={index}
                 className="bg-gradient-to-br from-sky-100 via-blue-50 to-cyan-100"
               >
                 <img
@@ -121,7 +122,9 @@ function College() {
                 </div>
 
                 <div className="mt-auto text-center">
+                  <Link to={`/college/${college._id}`}>
                   <Button className=" w-24 bg-white text-sky-500">More</Button>
+                  </Link>
                 </div>
               </Card>
             ))}

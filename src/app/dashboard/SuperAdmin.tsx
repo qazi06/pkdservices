@@ -9,7 +9,7 @@ import { getColleges } from "@/app/API/CollegesData";
 // import { DataTable } from "@/components/data-table";
 import { CollegeDataTable } from "@/components/ui/college-data-table";
 import { Card } from "@/components/ui/card";
-import Footer from "../../components/ui/Footer";
+import Footer from "@/components/ui/Footer";
 
 export type College = {
   _id: string;
